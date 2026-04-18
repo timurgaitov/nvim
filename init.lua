@@ -1,9 +1,11 @@
 -- Options
 vim.opt.relativenumber = true
-vim.cmd.colorscheme("default")
+
+vim.keymap.set("n", "<Esc><Esc>", "<cmd>nohlsearch<CR>", { silent = true })
 
 -- Leader key (must be set before lazy)
 vim.g.mapleader = " "
+vim.cmd.colorscheme("default")
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -40,7 +42,7 @@ require("lazy").setup({
         ["<CR>"] = { "accept", "fallback" },
       },
       sources = {
-        default = { "lsp", "path", "buffer" },
+        default = { "lsp", "path" },
       },
     },
   },
@@ -147,3 +149,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("]d", vim.diagnostic.goto_next)
   end,
 })
+
+vim.diagnostic.config({
+  virtual_text = true,         -- Show errors inline
+  signs = true,                -- Show signs in gutter
+  underline = true,            -- Underline error text
+  update_in_insert = false,    -- Don't spam while typing
+  severity_sort = true,        -- Sort by severity
+  float = {
+    border = 'rounded',
+    source = 'always',
+  },
+})
+
