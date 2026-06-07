@@ -1,5 +1,6 @@
 -- Options
 vim.opt.relativenumber = true
+vim.opt.diffopt:append("iwhite")
 vim.opt.langmap = "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
 
 vim.keymap.set("n", "<Esc><Esc>", "<cmd>nohlsearch<CR>", { silent = true })
@@ -78,7 +79,7 @@ require("lazy").setup({
   {
     "sindrets/diffview.nvim",
     keys = {
-      { "<leader>gd", "<cmd>DiffviewOpen<CR>" },
+      { "<leader>gd", "<cmd>DiffviewOpen -w<CR>" },
       { "<leader>gh", "<cmd>DiffviewFileHistory<CR>" },
       { "<leader>gq", "<cmd>DiffviewClose<CR>" },
     },
