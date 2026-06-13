@@ -78,6 +78,7 @@ require("lazy").setup({
   -- Diff viewer
   {
     "sindrets/diffview.nvim",
+    opts = { use_icons = false },
     keys = {
       { "<leader>gd", "<cmd>DiffviewOpen -w<CR>" },
       { "<leader>gh", "<cmd>DiffviewFileHistory<CR>" },
