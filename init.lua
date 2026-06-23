@@ -3,10 +3,12 @@ vim.opt.relativenumber = true
 vim.opt.diffopt:append("iwhite")
 vim.opt.langmap = "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
 
-vim.keymap.set("n", "<Esc><Esc>", "<cmd>nohlsearch<CR>", { silent = true })
-
 -- Leader key (must be set before lazy)
 vim.g.mapleader = " "
+
+vim.keymap.set("n", "<Esc><Esc>", "<cmd>nohlsearch<CR>", { silent = true })
+vim.keymap.set("n", "<leader>e", "<cmd>Ex<CR>")
+
 vim.cmd.colorscheme("default")
 
 -- Bootstrap lazy.nvim
