@@ -3,6 +3,7 @@ vim.opt.relativenumber = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.diffopt:append("iwhite")
 vim.opt.langmap = "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
+  .. [[,жЖэЭхХъЪбБюЮёЁ.\,;\;:'"[{]}\,<.>`~/?]]
 
 -- Leader key (must be set before lazy)
 vim.g.mapleader = " "
