@@ -77,6 +77,21 @@ require("lazy").setup({
   { "kristijanhusak/vim-dadbod-ui", dependencies = { "tpope/vim-dadbod" } },
   { "kristijanhusak/vim-dadbod-completion", dependencies = { "tpope/vim-dadbod" } },
 
+  -- Git change signs (gutter)
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      on_attach = function(bufnr)
+        local gs = require("gitsigns")
+        local map = function(key, fn) vim.keymap.set("n", key, fn, { buffer = bufnr }) end
+        map("]c", function() gs.nav_hunk("next") end)
+        map("[c", function() gs.nav_hunk("prev") end)
+        map("<leader>gp", gs.preview_hunk)
+        map("<leader>gb", gs.blame_line)
+      end,
+    },
+  },
+
   -- Diff viewer
   {
     "sindrets/diffview.nvim",
