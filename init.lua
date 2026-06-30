@@ -105,6 +105,16 @@ require("lazy").setup({
     },
   },
 
+  -- Image viewer (inline rendering via Ghostty's kitty graphics protocol)
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      image = { enabled = true },
+    },
+  },
+
   -- Telescope (fuzzy finder)
   {
     "nvim-telescope/telescope.nvim",
