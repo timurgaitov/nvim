@@ -11,6 +11,19 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<Esc><Esc>", "<cmd>nohlsearch<CR>", { silent = true })
 vim.keymap.set("n", "<leader>e", "<cmd>Ex<CR>")
 
+-- Open file in the macOS default app (e.g. images in Preview).
+-- In netrw, opens the file under the cursor without loading a buffer.
+vim.keymap.set("n", "<leader>o", function()
+  local path
+  if vim.bo.filetype == "netrw" then
+    local dir = vim.b.netrw_curdir or vim.fn.getcwd()
+    path = dir .. "/" .. vim.fn.expand("<cfile>")
+  else
+    path = vim.fn.expand("%:p")
+  end
+  vim.fn.jobstart({ "open", path })
+end)
+
 vim.cmd.colorscheme("default")
 
 -- Bootstrap lazy.nvim
@@ -102,16 +115,6 @@ require("lazy").setup({
       { "<leader>gd", "<cmd>DiffviewOpen -w<CR>" },
       { "<leader>gh", "<cmd>DiffviewFileHistory<CR>" },
       { "<leader>gq", "<cmd>DiffviewClose<CR>" },
-    },
-  },
-
-  -- Image viewer (inline rendering via Ghostty's kitty graphics protocol)
-  {
-    "folke/snacks.nvim",
-    priority = 1000,
-    lazy = false,
-    opts = {
-      image = { enabled = true },
     },
   },
 
