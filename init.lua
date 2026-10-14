@@ -75,7 +75,7 @@ require("lazy").setup({
     },
     config = function()
       require("dap-go").setup()
-      require("dap-python").setup("~/.local/share/uv/tools/debugpy/bin/python")
+      require("dap-python").setup("~/.local/share/debugpy/bin/python")
 
       local map = function(key, fn) vim.keymap.set("n", key, fn) end
       map("<leader>db", require("dap").toggle_breakpoint)
