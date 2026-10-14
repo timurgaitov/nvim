@@ -8,7 +8,7 @@ vim.opt.langmap = "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGH
 -- Leader key (must be set before lazy)
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<Esc><Esc>", "<cmd>nohlsearch<CR>", { silent = true })
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true })
 vim.keymap.set("n", "<leader>e", "<cmd>Ex<CR>")
 
 -- Open file in the macOS default app (e.g. images in Preview).
