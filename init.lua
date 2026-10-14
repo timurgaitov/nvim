@@ -134,23 +134,14 @@ vim.lsp.config("gopls", {
   capabilities = require("blink.cmp").get_lsp_capabilities(),
 })
 
-vim.lsp.config("pyright", {
-  cmd = { "pyright-langserver", "--stdio" },
+vim.lsp.config("pyrefly", {
+  cmd = { "pyrefly", "lsp" },
   filetypes = { "python" },
-  root_markers = { "pyproject.toml", "setup.py", ".git" },
+  root_markers = { "pyrefly.toml", "pyproject.toml", "setup.py", ".git" },
   capabilities = require("blink.cmp").get_lsp_capabilities(),
-  settings = {
-    python = {
-      analysis = {
-        autoSearchPaths = true,
-        useLibraryCodeForTypes = true,
-        diagnosticMode = "workspace",
-      },
-    },
-  },
 })
 
-vim.lsp.enable({ "gopls", "pyright" })
+vim.lsp.enable({ "gopls", "pyrefly" })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.go",
