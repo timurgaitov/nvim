@@ -66,43 +66,6 @@ require("lazy").setup({
     },
   },
 
-  -- Debugger
-  {
-    "mfussenegger/nvim-dap",
-    dependencies = {
-      "leoluz/nvim-dap-go",
-      "mfussenegger/nvim-dap-python",
-    },
-    config = function()
-      require("dap-go").setup()
-      require("dap-python").setup("~/.local/share/debugpy/bin/python")
-
-      local dap = require("dap")
-      local map = function(key, fn) vim.keymap.set("n", key, fn) end
-      map("<leader>db", dap.toggle_breakpoint)
-      map("<leader>dB", function() dap.set_breakpoint(vim.fn.input("Condition: ")) end)
-      map("<leader>dc", dap.continue)
-      map("<leader>do", dap.step_over)
-      map("<leader>di", dap.step_into)
-      map("<leader>dO", dap.step_out)
-      map("<leader>dR", dap.restart)
-      map("<leader>dq", dap.terminate)
-      map("<leader>dr", dap.repl.open)
-
-      -- VSCode-style function keys. Terminals often send Shift+Fn as F(n+12),
-      -- so map both forms.
-      map("<F5>", dap.continue)
-      map("<S-F5>", dap.terminate)
-      map("<F17>", dap.terminate)
-      map("<C-S-F5>", dap.restart)
-      map("<F9>", dap.toggle_breakpoint)
-      map("<F10>", dap.step_over)
-      map("<F11>", dap.step_into)
-      map("<S-F11>", dap.step_out)
-      map("<F23>", dap.step_out)
-    end,
-  },
-
   -- Git change signs (gutter)
   {
     "lewis6991/gitsigns.nvim",
