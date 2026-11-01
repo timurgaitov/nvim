@@ -5,11 +5,22 @@ vim.opt.diffopt:append("iwhite")
 vim.opt.langmap = "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
   .. [[,жЖэЭхХъЪбБюЮёЁ.\,;\;:'"[{]}\,<.>`~/?]]
 
+-- Indentation: 4 columns wide, for both tabs and spaces
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+
 -- Leader key (must be set before lazy)
 vim.g.mapleader = " "
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true })
 vim.keymap.set("n", "<leader>e", "<cmd>Ex<CR>")
+
+-- Toggle tabs/spaces for the current buffer (no conversion of existing text)
+vim.keymap.set("n", "<leader>i", function()
+  vim.bo.expandtab = not vim.bo.expandtab
+  print(vim.bo.expandtab and "spaces" or "tabs")
+end)
 
 -- Open file in the macOS default app (e.g. images in Preview).
 -- In netrw, opens the file under the cursor without loading a buffer.
