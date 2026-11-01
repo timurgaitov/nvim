@@ -57,7 +57,7 @@ require("lazy").setup({
     build = ":TSUpdate",
     main = "nvim-treesitter",
     opts = {
-      ensure_installed = { "go", "python" },
+      ensure_installed = { "go", "python", "c" },
       highlight = { enable = true },
     },
   },
@@ -131,7 +131,14 @@ vim.lsp.config("pyrefly", {
   capabilities = require("blink.cmp").get_lsp_capabilities(),
 })
 
-vim.lsp.enable({ "gopls", "pyrefly" })
+vim.lsp.config("clangd", {
+  cmd = { "clangd", "--background-index", "--clang-tidy" },
+  filetypes = { "c", "cpp", "objc", "objcpp" },
+  root_markers = { "compile_commands.json", "compile_flags.txt", ".clangd", ".git" },
+  capabilities = require("blink.cmp").get_lsp_capabilities(),
+})
+
+vim.lsp.enable({ "gopls", "pyrefly", "clangd" })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.go",
