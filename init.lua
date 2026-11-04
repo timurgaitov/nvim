@@ -162,6 +162,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("gi", vim.lsp.buf.implementation)
     map("gr", vim.lsp.buf.references)
     map("K",  vim.lsp.buf.hover)
+    map("<leader>rn", vim.lsp.buf.rename)
     map("<leader>de", vim.diagnostic.open_float)
     map("[d", vim.diagnostic.goto_prev)
     map("]d", vim.diagnostic.goto_next)
