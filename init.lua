@@ -55,11 +55,16 @@ require("lazy").setup({
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    main = "nvim-treesitter",
-    opts = {
-      ensure_installed = { "go", "python", "c" },
-      highlight = { enable = true },
-    },
+    config = function()
+      -- Installs in the background; no-op once parsers are present
+      require("nvim-treesitter").install({ "go", "python" })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "go", "python" },
+        -- pcall: the parser may still be installing on first run
+        callback = function() pcall(vim.treesitter.start) end,
+      })
+    end,
   },
 
   -- Completion
